@@ -9,20 +9,34 @@
   </head>
   <body>
     <header>
-   <h1>Heading</h1>
+   <h1>To-do list</h1>
     </header>
     <main>
-   <div id="app"></div>
-    <!--<div class="container text-center">-->
+   <div class="row">
+     <div class="col-4">
+      <p>Lägg till tasks</p>
+     </div>
+    <div class="col-8">
+      <form id = "form">
+       <label for="task">Task:</label>
+       <input type="text" id="taskInput" name="taskInput" placeholder="Skriva">
+       <button id ="Button">Add</button>
+       </form>
+</div>
+    </div>
+  </div>
   <div class="row">
-     <div class="col-4">col-4
+     <div class="col-4">
+      <h2>Done</h2>
       <ul id = "listtwo"></ul>
      </div>
-    <div class="col-8">col-8
+    <div class="col-8">
+      <h2>Not done</h2>
       <ul id="list"></ul>
     </div>
   </div>
  <!--</div>-->
+ <p id = "demo"></p>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>
