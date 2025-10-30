@@ -70,22 +70,26 @@ const createHtmlTask = () => {
         
        if(toDoList[i].isDone == false){
        const containerItem = document.createElement("li");
-       const taskName = document.createElement("h2");
+       const taskName = document.createElement("h3");
        const statusCheck = document.createElement("input");
+       const buttonDiv = document.createElement("div");
        const arrowDown = document.createElement("button");
        const arrowUpp = document.createElement("button");
  
-
        containerItem.className = "Task";
        taskName.innerHTML = task.task;
        statusCheck.type = "checkbox";
+       buttonDiv.className = "navButton"
        arrowDown.innerHTML = "NER";
        arrowUpp.innerHTML = "UPP";
 
-        containerItem.appendChild(taskName);
         containerItem.appendChild(statusCheck);
-        containerItem.appendChild(arrowDown);
-        containerItem.appendChild(arrowUpp);
+        containerItem.appendChild(taskName);
+        buttonDiv.appendChild(arrowDown);
+        buttonDiv.appendChild(arrowUpp);
+        containerItem.appendChild(buttonDiv);
+        //containerItem.appendChild(arrowDown);
+        //containerItem.appendChild(arrowUpp);
         mainList.appendChild(containerItem);
 
         statusCheck.addEventListener("click", () => {
@@ -128,7 +132,7 @@ const createHtmlTask = () => {
     }
     else {
         const containerItemDone = document.createElement("li");
-        const taskNameDone = document.createElement("h2"); 
+        const taskNameDone = document.createElement("h3"); 
 
         containerItemDone.className = "Task";
         taskNameDone.innerHTML = task.task;

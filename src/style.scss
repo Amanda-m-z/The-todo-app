@@ -21,9 +21,22 @@ main {
         width: 800px;
         margin: auto;
 
-        
             h2 {
                 padding: 20px 0px;
+                text-align: center;
+            }
+            .col-8 {
+                .Task {
+                    //background-color: purple;
+                    display: flex;
+                    align-items: center;
+                    //justify-content: center;
+                    gap: 10px;
+
+                    .navButton {
+                        margin-left: auto;
+                    }
+                }
             }
     }
 }
