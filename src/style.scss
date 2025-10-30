@@ -4,3 +4,26 @@
 .col-8 {
     border: red 2px solid;
 }
+
+body {
+    margin: 6%;
+}
+header {
+    h1 {
+        text-align: center;
+        padding-bottom: 20px;
+        font-size: 400%;
+    }
+}
+main {
+    .row {
+        background-color: pink;
+        width: 800px;
+        margin: auto;
+
+        
+            h2 {
+                padding: 20px 0px;
+            }
+    }
+}

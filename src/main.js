@@ -1,5 +1,6 @@
 //import { jsx } from "react/jsx-runtime";
 //import { DevEnvironment } from "vite";
+//import { jsx } from "react/jsx-runtime";
 import "./style.scss";
 
 class Task {
@@ -20,6 +21,7 @@ let toDoListBackup = [
     new Task ("get dressed", false),
     new Task ("go to school", false),
 ];
+
 let toDoList = [
     new Task ("eat breakfast", false),
     new Task ("brush teeth", false),
@@ -28,25 +30,15 @@ let toDoList = [
     new Task ("get dressed", false),
     new Task ("go to school", false),
 ];
-//let stringbasic = JSON.stringify(toDoList);
-//localStorage.setItem("tasksBasic", stringbasic);
 
-  const tasksLocalStorage = localStorage.getItem("tasks");
-   if(tasksLocalStorage === null){
+
+const tasksLocalStorage = localStorage.getItem("tasks");
+ if (tasksLocalStorage === null){
     toDoList = toDoListBackup;
-    }
-    else {
+}
+ else{
     toDoList = JSON.parse(tasksLocalStorage);
-    }
-
-//TEST
-let doneList = [
-   new Task("open to-do", false)
-];
-
-let doneListBackup = [
-    new Task("open to-do", false)
-];
+ }
 
 //Submit
 const submitButton = (e) => {
@@ -57,178 +49,101 @@ const submitButton = (e) => {
     const newTask = new Task (newTaskInput, false);
     toDoList.push(newTask);
 
-
-    localStorage.setItem("tasks", JSON.stringify(toDoList));
-    console.log("Du har lagt till något");
-    
+    localStorage.setItem("tasks", JSON.stringify(toDoList));    
     createHtmlTask();
 }
 
-//Testar här
+
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", submitButton);
-//console.log(myForm);
-//const clickButton = document.getElementById("Button");
-//clickButton.addEventListener("click", submitButton);
 
-//clickButton.addEventListener(
-  //  "submit",
-   // function(event) {
-    //  event.preventDefault();
-
-//    const newTaskInput = document.getElementById("taskInput").value;
+const createHtmlTask = () => {
     
-  //  const newTask = new Task (newTaskInput, false);
-   // toDoList.push(newTask);
-
-
-//    localStorage.setItem("tasks", JSON.stringify(toDoList));
-  //  console.log("Du har lagt till något");
-    
-   // createHtmlTask();
-   // }
-//);
-//myForm.addEventListener("sumbit", submitButton);
-
-
-    const createHtmlTask = () => {
     const mainList = document.getElementById("list");
     mainList.innerHTML = " "; //Tömmer listan vid förändringen
+    const mainListDone = document.getElementById("listtwo");
+    mainListDone.innerHTML = " "; //Tömmer listan vid förändringen
+        
+    toDoList.forEach((task, i)  => {
 
+    //toDoList = JSON.parse(localStorage.getItem("tasks"));
+        
+       if(toDoList[i].isDone == false){
+       const containerItem = document.createElement("li");
+       const taskName = document.createElement("h2");
+       const statusCheck = document.createElement("input");
+       const arrowDown = document.createElement("button");
+       const arrowUpp = document.createElement("button");
+ 
 
-        toDoList.forEach((task, i) => {
+       containerItem.className = "Task";
+       taskName.innerHTML = task.task;
+       statusCheck.type = "checkbox";
+       arrowDown.innerHTML = "NER";
+       arrowUpp.innerHTML = "UPP";
 
-        const containerItem = document.createElement("li");
-        const taskName = document.createElement("h2");
-        const statusText = document.createElement("p");
-        const statusCheck = document.createElement("input");
-        //Testa
-        const arrowDown = document.createElement("button");
-        const arrowUpp = document.createElement("button");
-        containerItem.className = "Task";
-        taskName.innerHTML = task.task;
-        statusText.innerHTML = task.isDone;
-        statusCheck.type = "checkbox";
-        //testa
-        arrowDown.innerHTML = "NER";
-        arrowUpp.innerHTML = "UPP";
+        containerItem.appendChild(taskName);
+        containerItem.appendChild(statusCheck);
+        containerItem.appendChild(arrowDown);
+        containerItem.appendChild(arrowUpp);
+        mainList.appendChild(containerItem);
+
+        statusCheck.addEventListener("click", () => {
+        toDoList[i].isDone = true;
+        localStorage.setItem("tasks", JSON.stringify(toDoList));
+        toDoList = JSON.parse(localStorage.getItem("tasks"));
+         createHtmlTask();
+        });
 
         arrowDown.addEventListener("click", () => {
-            console.log("Du aktiverade metoden");
         
         if(toDoList[i+1] == null)
         {
-            console.log("NULL")
+            toDoList[i] = toDoList[i];
         }
         else {
-        //testar
-        console.log(toDoList[i].task);
-        const x = toDoList[i];
-        console.log(x);
-        toDoList[i] = toDoList[i+1];
-        console.log(toDoList[i]);
-        toDoList[i+1] = x;
-        console.log(toDoList[i]);
-        }
-
-        //console.log("Här är test" + toDoList[i].task);
+           const x = toDoList[i];
+           toDoList[i] = toDoList[i+1];
+           toDoList[i+1] = x;
+          }
+        
         localStorage.setItem("tasks",JSON.stringify(toDoList));
-        createHtmlTask();
-        //localStorage.setItem("DONE", JSON.stringify(doneList));
+        createHtmlTask();        
     });
+        
     arrowUpp.addEventListener("click", () => {
-            console.log("Du aktiverade metoden");
         
        if(toDoList[i-1] == null)
         {
-            console.log("NULL")
+         toDoList[i-1] = toDoList[i-1];
         }
         else {
-        //testar
-        console.log(toDoList[i].task);
         const x = toDoList[i];
-        console.log(x);
         toDoList[i] = toDoList[i-1];
-        console.log(toDoList[i]);
         toDoList[i-1] = x;
-        console.log(toDoList[i]);
         }
-
-        //console.log("Här är test" + toDoList[i].task);
         localStorage.setItem("tasks",JSON.stringify(toDoList));
         createHtmlTask();
-        //localStorage.setItem("DONE", JSON.stringify(doneList));
     });
-        statusCheck.addEventListener("click", () => {
-
-        toDoList[i].isDone = true;
-        doneList.push(task);
-        localStorage.setItem("DONE", JSON.stringify(doneList));
-        createHtmlDONE();
-        
-       toDoList.splice(task, 1);
-       localStorage.setItem("tasks",JSON.stringify(toDoList));
-
-        createHtmlTask();
-       });
-       
-       containerItem.appendChild(taskName);
-       containerItem.appendChild(statusText);
-       containerItem.appendChild(statusCheck);
-       
-       //Test
-       console.log(toDoList.length);
-       containerItem.appendChild(arrowDown);
-       containerItem.appendChild(arrowUpp);
-
-       document.body.appendChild(containerItem);
-       mainList.appendChild(containerItem);
-    
-
-    });
-}
-
-    const stringLocal = localStorage.getItem("DONE");
-    if (stringLocal === null){
-        doneList = doneListBackup;
     }
     else {
-      doneList = JSON.parse(stringLocal);
-    }
-     
-const createHtmlDONE = () => {
-    const mainListDone = document.getElementById("listtwo");
-   mainListDone.innerHTML = " "; //Tömmer listan vid förändringen
-
-
-    doneList.forEach((done, i) => {
-
         const containerItemDone = document.createElement("li");
         const taskNameDone = document.createElement("h2"); 
 
         containerItemDone.className = "Task";
-        taskNameDone.innerHTML = done.task;
+        taskNameDone.innerHTML = task.task;
 
         containerItemDone.appendChild(taskNameDone);
         document.body.appendChild(containerItemDone);
-        mainListDone.appendChild(containerItemDone);
-    
-        //Testar
-        taskNameDone.addEventListener("click", () => {
-            doneList[i].isDone = false;
-            toDoList.push(done);
-            localStorage.setItem("tasks", JSON.stringify(toDoList));
-            createHtmlTask();
+        mainListDone.appendChild(containerItemDone); 
 
-            
-            doneList.splice(i, 1);
-            localStorage.setItem("DONE",JSON.stringify(doneList));
-            createHtmlDONE();
-        })
-        
+         taskNameDone.addEventListener("click", () => {
+         toDoList[i].isDone = false;
+         localStorage.setItem("tasks", JSON.stringify(toDoList));
+         
+         createHtmlTask();
+        });
+    }
     });
-
 }
-
 createHtmlTask();
-createHtmlDONE();
