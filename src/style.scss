@@ -1,42 +1,95 @@
 .col-4 {
-    border: red 2px solid;
+    border: white 2px solid;
 }
 .col-8 {
-    border: red 2px solid;
+    border: white 2px solid;
 }
 
 body {
     margin: 6%;
+    background-color: #c7e8f0;
+    font-family: Georgia, serif;
 }
 header {
     h1 {
         text-align: center;
-        padding-bottom: 20px;
         font-size: 400%;
+    }
+    p {
+        text-align: center;
+        font-size: 22px;
+        padding-bottom: 20px;
     }
 }
 main {
     .row {
-        background-color: pink;
+        background-color:#e8f9fd;
         width: 800px;
         margin: auto;
 
+        #form-Div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+          input[type=text] {
+            width: 85%;
+            padding: 2px;
+            border-radius: 4px;
+          }
+        }
             h2 {
-                padding: 20px 0px;
+                padding: 22px 0px;
+                font-size: 24px;
                 text-align: center;
             }
-            .col-8 {
+            h3{
+                        font-size: 20px;
+            }
+            .col-4 {
+
+              #listtwo {
+                list-style: none;
+
                 .Task {
-                    //background-color: purple;
                     display: flex;
                     align-items: center;
-                    //justify-content: center;
                     gap: 10px;
+                    padding-bottom: 8px;
+
+                .removeTheTask {
+                    margin-left: auto;
+                }
+              
+                .taskDone {
+                    text-decoration: line-through;
+                    color: rgba(34, 34, 34, 0.8);
+
+                    &:hover 
+                    {
+                        text-decoration: none;
+                        color: black;
+                    }
+                }
+            }
+        }
+        }
+    }
+            .col-8 {
+                .Task {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding-bottom: 8px;
 
                     .navButton {
                         margin-left: auto;
+
+                        button {
+                            width: 26px;
+                            height: 30px;
+                        }
                     }
                 }
             }
     }
-}

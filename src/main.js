@@ -40,20 +40,19 @@ const tasksLocalStorage = localStorage.getItem("tasks");
     toDoList = JSON.parse(tasksLocalStorage);
  }
 
-//Submit
 const submitButton = (e) => {
     e.preventDefault();
 
     const newTaskInput = document.getElementById("taskInput").value;
-    
+
+    if (newTaskInput.length > 0){
     const newTask = new Task (newTaskInput, false);
     toDoList.push(newTask);
 
     localStorage.setItem("tasks", JSON.stringify(toDoList));    
     createHtmlTask();
+    }    
 }
-
-
 const myForm = document.getElementById("form");
 myForm.addEventListener("submit", submitButton);
 
@@ -65,8 +64,6 @@ const createHtmlTask = () => {
     mainListDone.innerHTML = " "; //Tömmer listan vid förändringen
         
     toDoList.forEach((task, i)  => {
-
-    //toDoList = JSON.parse(localStorage.getItem("tasks"));
         
        if(toDoList[i].isDone == false){
        const containerItem = document.createElement("li");
@@ -80,16 +77,15 @@ const createHtmlTask = () => {
        taskName.innerHTML = task.task;
        statusCheck.type = "checkbox";
        buttonDiv.className = "navButton"
-       arrowDown.innerHTML = "NER";
-       arrowUpp.innerHTML = "UPP";
-
+       arrowDown.innerHTML = "&#8595;";
+       arrowDown.className = "buttonDown";
+       arrowUpp.innerHTML = "&#x2191;";
+       
         containerItem.appendChild(statusCheck);
         containerItem.appendChild(taskName);
         buttonDiv.appendChild(arrowDown);
         buttonDiv.appendChild(arrowUpp);
         containerItem.appendChild(buttonDiv);
-        //containerItem.appendChild(arrowDown);
-        //containerItem.appendChild(arrowUpp);
         mainList.appendChild(containerItem);
 
         statusCheck.addEventListener("click", () => {
@@ -109,7 +105,7 @@ const createHtmlTask = () => {
            const x = toDoList[i];
            toDoList[i] = toDoList[i+1];
            toDoList[i+1] = x;
-          }
+        }
         
         localStorage.setItem("tasks",JSON.stringify(toDoList));
         createHtmlTask();        
@@ -132,22 +128,40 @@ const createHtmlTask = () => {
     }
     else {
         const containerItemDone = document.createElement("li");
-        const taskNameDone = document.createElement("h3"); 
+        const taskNameDone = document.createElement("h3");
+        const inputChecked = document.createElement("input"); 
+        const removeItem = document.createElement("button");
 
         containerItemDone.className = "Task";
         taskNameDone.innerHTML = task.task;
-
+        taskNameDone.className = "taskDone";
+        inputChecked.type = "checkbox";
+        inputChecked.checked = task.isDone;
+        inputChecked.disabled = true;
+        removeItem.innerHTML = "X";
+        removeItem.className = "removeTheTask";
+        
+        containerItemDone.appendChild(inputChecked);
         containerItemDone.appendChild(taskNameDone);
-        document.body.appendChild(containerItemDone);
+        containerItemDone.appendChild(removeItem);
         mainListDone.appendChild(containerItemDone); 
-
+       
          taskNameDone.addEventListener("click", () => {
          toDoList[i].isDone = false;
          localStorage.setItem("tasks", JSON.stringify(toDoList));
          
          createHtmlTask();
         });
+        
+        removeItem.addEventListener("click", () => {
+         if(toDoList[i].isDone == true)
+            {
+            toDoList.splice(toDoList[i], 1);   
+         localStorage.setItem("tasks", JSON.stringify(toDoList));
+         createHtmlTask();
+            }
+        });
     }
-    });
+});
 }
 createHtmlTask();
