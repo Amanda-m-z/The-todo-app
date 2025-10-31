@@ -1,29 +1,49 @@
+$background-color: #c7e8f0;
+$main-color: #e8f9fd;
+$border-around-color: white;
+
+@mixin textStyle ($textAlign: center, $fontSize) {
+    text-align: $textAlign;
+    font-size: $fontSize;
+}
+@mixin addFlex ($flex-direct: row, $align-flex: normal, $justify-flex: normal){
+    display: flex;
+    flex-direction: $flex-direct;
+    align-items: $align-flex;
+    justify-content: $justify-flex;
+    gap: 10px;
+    padding-bottom: 8px;
+}
+@mixin button (){
+    width: 26px;
+    height: 30px;
+}
+@mixin mainBorder (){
+    border: $border-around-color 2px solid;
+}
+
 body {
     margin: 6%;
-    background-color: #c7e8f0;
+    background-color: $background-color;
     font-family: Georgia, serif;
 }
 header {
     h1 {
-        text-align: center;
-        font-size: 400%;
+        @include textStyle($fontSize: 400%);
     }
     p {
-        text-align: center;
-        font-size: 22px;
+        @include textStyle($fontSize: 22px);
         padding-bottom: 20px;
     }
 }
 main {
     .row {
-        background-color:#e8f9fd;
-        width: 800px;
+        background-color: $main-color;
+        width: 1200px;
         margin: auto;
 
         #form-Div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include addFlex($flex-direct: column, $justify-flex: center);
 
           input[type=text] {
             width: 85%;
@@ -31,30 +51,26 @@ main {
             border-radius: 4px;
           }
         }
-            h2 {
+        h2 {
+                @include textStyle($fontSize: 24px);
                 padding: 22px 0px;
-                font-size: 24px;
-                text-align: center;
             }
-            h3{
-                        font-size: 20px;
+        h3 {
+                @include textStyle($textAlign: left, $fontSize: 20px);
             }
             .col-4 {
-                    border: white 2px solid;
+                @include mainBorder();
 
-              #listtwo {
+              #listTwo {
                 list-style: none;
 
-                .Task {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    padding-bottom: 8px;
+                .task {
+                    @include addFlex($align-flex: center);
+                    flex-wrap: wrap;
 
                 .removeTheTask {
                     margin-left: auto;
-                    width: 26px;
-                    height: 30px;
+                    @include button();
                 }
               
                 .taskDone {
@@ -69,13 +85,11 @@ main {
                 }
             }
         }
-        }
     }
             .col-8 {
-                    border: white 2px solid;
-                .Task {
-                    display: flex;
-                    align-items: center;
+                    @include mainBorder();
+                .task {
+                    @include addFlex($align-flex: center);
                     gap: 10px;
                     padding-bottom: 8px;
 
@@ -83,10 +97,10 @@ main {
                         margin-left: auto;
 
                         button {
-                            width: 26px;
-                            height: 30px;
+                        @include button();
                         }
                     }
                 }
             }
     }
+}

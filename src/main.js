@@ -45,7 +45,7 @@ const submitButton = (e) => {
 
     const newTaskInput = document.getElementById("taskInput").value;
 
-    if (newTaskInput.length > 0){
+    if (newTaskInput.length > 0 && newTaskInput.length <= 18){
     const newTask = new Task (newTaskInput, false);
     toDoList.push(newTask);
 
@@ -60,7 +60,7 @@ const createHtmlTask = () => {
     
     const mainList = document.getElementById("list");
     mainList.innerHTML = " "; //Tömmer listan vid förändringen
-    const mainListDone = document.getElementById("listtwo");
+    const mainListDone = document.getElementById("listTwo");
     mainListDone.innerHTML = " "; //Tömmer listan vid förändringen
         
     toDoList.forEach((task, i)  => {
@@ -73,7 +73,7 @@ const createHtmlTask = () => {
        const arrowDown = document.createElement("button");
        const arrowUpp = document.createElement("button");
  
-       containerItem.className = "Task";
+       containerItem.className = "task";
        taskName.innerHTML = task.task;
        statusCheck.type = "checkbox";
        buttonDiv.className = "navButton"
@@ -131,7 +131,7 @@ const createHtmlTask = () => {
         const inputChecked = document.createElement("input"); 
         const removeItem = document.createElement("button");
 
-        containerItemDone.className = "Task";
+        containerItemDone.className = "task";
         taskNameDone.innerHTML = task.task;
         taskNameDone.className = "taskDone";
         inputChecked.type = "checkbox";
