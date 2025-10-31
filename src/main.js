@@ -78,7 +78,6 @@ const createHtmlTask = () => {
        statusCheck.type = "checkbox";
        buttonDiv.className = "navButton"
        arrowDown.innerHTML = "&#8595;";
-       arrowDown.className = "buttonDown";
        arrowUpp.innerHTML = "&#x2191;";
        
         containerItem.appendChild(statusCheck);
@@ -138,7 +137,7 @@ const createHtmlTask = () => {
         inputChecked.type = "checkbox";
         inputChecked.checked = task.isDone;
         inputChecked.disabled = true;
-        removeItem.innerHTML = "X";
+        removeItem.innerHTML = "&#10007";
         removeItem.className = "removeTheTask";
         
         containerItemDone.appendChild(inputChecked);

@@ -1,10 +1,3 @@
-.col-4 {
-    border: white 2px solid;
-}
-.col-8 {
-    border: white 2px solid;
-}
-
 body {
     margin: 6%;
     background-color: #c7e8f0;
@@ -47,6 +40,7 @@ main {
                         font-size: 20px;
             }
             .col-4 {
+                    border: white 2px solid;
 
               #listtwo {
                 list-style: none;
@@ -59,6 +53,8 @@ main {
 
                 .removeTheTask {
                     margin-left: auto;
+                    width: 26px;
+                    height: 30px;
                 }
               
                 .taskDone {
@@ -76,6 +72,7 @@ main {
         }
     }
             .col-8 {
+                    border: white 2px solid;
                 .Task {
                     display: flex;
                     align-items: center;
