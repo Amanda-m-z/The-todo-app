@@ -30,8 +30,6 @@ let toDoList = [
     new Task ("get dressed", false),
     new Task ("go to school", false),
 ];
-
-
 const tasksLocalStorage = localStorage.getItem("tasks");
  if (tasksLocalStorage === null){
     toDoList = toDoListBackup;
@@ -45,7 +43,7 @@ const submitButton = (e) => {
 
     const newTaskInput = document.getElementById("taskInput").value;
 
-    if (newTaskInput.length > 0 && newTaskInput.length <= 18){
+    if (newTaskInput.length > 0 && newTaskInput.length <= 20){
     const newTask = new Task (newTaskInput, false);
     toDoList.push(newTask);
 
@@ -91,7 +89,8 @@ const createHtmlTask = () => {
         toDoList[i].isDone = true;
         localStorage.setItem("tasks", JSON.stringify(toDoList));
         toDoList = JSON.parse(localStorage.getItem("tasks"));
-         createHtmlTask();
+
+        createHtmlTask();
         });
 
         arrowDown.addEventListener("click", () => {
@@ -147,18 +146,19 @@ const createHtmlTask = () => {
        
          taskNameDone.addEventListener("click", () => {
          toDoList[i].isDone = false;
+         
+
+         
          localStorage.setItem("tasks", JSON.stringify(toDoList));
          
          createHtmlTask();
         });
         
         removeItem.addEventListener("click", () => {
-         if(toDoList[i].isDone == true)
-            {
-            toDoList.splice(toDoList[i], 1);   
-         localStorage.setItem("tasks", JSON.stringify(toDoList));
-         createHtmlTask();
-            }
+             console.log("Du tog bort" + toDoList[i].task); 
+            toDoList.splice(i, 1);
+            localStorage.setItem("tasks", JSON.stringify(toDoList));
+            createHtmlTask();
         });
     }
 });

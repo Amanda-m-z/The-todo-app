@@ -39,7 +39,7 @@ header {
 main {
     .row {
         background-color: $main-color;
-        width: 1200px;
+        width: 1000px;
         margin: auto;
 
         #form-Div {
@@ -70,7 +70,7 @@ main {
 
                 .removeTheTask {
                     margin-left: auto;
-                    @include button();
+                    //@include button();
                 }
               
                 .taskDone {
