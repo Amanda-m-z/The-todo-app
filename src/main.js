@@ -1,6 +1,3 @@
-//import { jsx } from "react/jsx-runtime";
-//import { DevEnvironment } from "vite";
-//import { jsx } from "react/jsx-runtime";
 import "./style.scss";
 
 class Task {
