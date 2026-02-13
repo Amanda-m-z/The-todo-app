@@ -11,7 +11,7 @@ The application allows users to create, manage, prioritize, and track tasks thro
 - Delete tasks  
 - Mark tasks as completed  
 - Change the order of tasks (drag-and-drop style)  
-- Persistent data storage using LocalStorage  
+- Persistent data storage using LocalStorage
 
 ## Tech Stack
 
