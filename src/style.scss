@@ -33,21 +33,21 @@ header {
     }
     p {
         @include textStyle($fontSize: 22px);
-        padding-bottom: 20px;
+        padding-bottom: 2em;
     }
 }
 main {
     .row {
         background-color: $main-color;
-        width: 1000px;
+        width: 80vw;
         margin: auto;
 
         #form-Div {
         @include addFlex($flex-direct: column, $justify-flex: center);
 
-          input[type=text] {
-            width: 85%;
-            padding: 2px;
+          #taskInput {
+            width: 80%;
+            //padding: 2px;
             border-radius: 4px;
           }
         }
@@ -103,4 +103,26 @@ main {
                 }
             }
     }
+}
+@media (max-width: 768px) {
+    main {
+    .row {
+        #form-Div {
+        @include addFlex($flex-direct: column, $justify-flex: center);
+
+          #taskInput {
+            width: 70%;
+            //padding: 2px;
+            border-radius: 4px;
+          }
+        }
+        h2 {
+                @include textStyle($fontSize: 20px);
+                padding: 22px 0px;
+            }
+        h3 {
+                @include textStyle($textAlign: left, $fontSize: 16px);
+            }
+    }
+}   
 }
