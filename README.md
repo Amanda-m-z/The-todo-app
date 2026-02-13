@@ -1,42 +1,54 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/R4VHVPzD)
-# Inlämningsuppgift Todo
+# The To-Do App
 
-I denna inlämningsuppgift kommer ni att skapa er egen todo-lista.
-Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp på skärmen i form av en lista. När uppgiften är slutförd skall användaren kunna markera uppgiften som slutförd och uppgiften skall då tas bort från listan.
+**The To-Do App** is a responsive task management application built independently during my frontend development studies.  
+It was my first individual project and demonstrates my ability to create a clean, functional, and user-friendly web application.
 
-## Betyg G
+The application allows users to create, manage, prioritize, and track tasks through an intuitive interface.
 
-- Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter)
-- Presentera denna på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
-- Implementera klickhändelse för att hantera borttagandet av en todo.
-- Todo tas bort från skärmen och **markeras som klar i javascript-listan**.
-- Implementera ett valfritt grafiskt ramverk till din todolista, t.ex. bootstrap, material ui, tailwind eller liknande :)
+## Key Features
 
-## Betyg VG
+- Add new tasks  
+- Delete tasks  
+- Mark tasks as completed  
+- Change the order of tasks (drag-and-drop style)  
+- Persistent data storage using LocalStorage  
 
-- Alla punkter under G
-- Kunna visa även klara händelser och klicka tillbaka den så att de blir oklara igen.
-- Skapa ett formulär som tillåter att en användare skapar nya todos efterhand.
-- Kunna sortera ordningen på dina todos
+## Tech Stack
 
-## Allmänt
+- HTML  
+- CSS / SCSS  
+- JavaScript  
+- LocalStorage API  
 
-Projektet ni har är ett vite-projekt. D.v.s. ni måste köra:
+## Purpose of the Project
 
-```shell
-npm i
-```
+This project was created to strengthen my understanding of:
 
-och
+- JavaScript fundamentals  
+- DOM manipulation  
+- State management  
+- Application structure and code organization  
+- Writing clean and maintainable code  
+- Problem-solving and debugging
 
-```shell
-npm run dev 
-```
+## What I Learned
 
-för att köra projektet.
+Working on this project helped me develop and strengthen several key skills:
 
-- Det finns många sätt att lösa denna uppgift på. Om ni känner er osäkra på någonting, fråga hellre någon gång för mycket så att ni känner er säkra på vad ni utvecklar.
-- Ni får gärna ändra strukturen i projektet, detta är bara en grund.
-- Börja med att planera ert arbete, börja inte med Visual Studio Code, även om det är lockande.
-- Gör ert bästa att inte stressa. Lättare sagt än gjort, jag vet. Men ingen mår bättre av att stressa.
-- Ha roligt, skratta när det blir fel och fortsätt att vara nyfiken :)
+- **JavaScript & DOM manipulation:** Learned to dynamically update the interface and handle user interactions.  
+- **State management:** Managed tasks' state efficiently and implemented persistent storage using LocalStorage.  
+- **Application structure:** Improved my ability to organize code in a maintainable and readable way.  
+- **Responsive design:** Designed the interface to work seamlessly on both desktop and mobile screens.  
+- **Problem-solving & debugging:** Learned to identify and fix bugs independently while improving overall functionality.  
+- **UX & usability:** Focused on creating a clean, intuitive, and user-friendly interface.
+
+## Future Improvements
+
+- Add filtering (completed / active tasks)  
+- Add due dates  
+- Add search functionality for tasks  
+
+## Author
+
+Amanda Zetterberg  
+Frontend Developer Student  
